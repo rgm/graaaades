@@ -35,14 +35,17 @@ CREATE TABLE "snapshots" (
 );
 
 
-CREATE TABLE "special_scores" (
+CREATE TABLE "score_types" (
 "id" INTEGER PRIMARY KEY AUTOINCREMENT,
 "name" TEXT NOT NULL,
-"score" REAL NOT NULL DEFAULT 0,
+"score" REAL,
 "should_omit" INTEGER CHECK (should_omit == 0 OR should_omit == 1) DEFAULT 0
 );
-INSERT INTO "special_scores" VALUES (1, 'Absent', 0.0, 0);
-INSERT INTO "special_scores" VALUES (2, 'Excused', 0.0, 1);
+
+INSERT INTO "score_types" VALUES (1, 'On Time', NULL, 0); 
+INSERT INTO "score_types" VALUES (2, 'Absent', 0.0, 0);
+INSERT INTO "score_types" VALUES (3, 'Excused', NULL, 1);
+INSERT INTO "score_types" VALUES (1, 'Late', NULL, 0);
 
 
 CREATE TABLE "students" (
