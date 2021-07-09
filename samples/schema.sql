@@ -70,7 +70,8 @@ CREATE TABLE "students_tasks" (
 
 CREATE TABLE "task_sets" (
 "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-"name" TEXT
+"name" TEXT,
+"deleted" INTEGER CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
 );
 INSERT INTO "task_sets" VALUES (1, 'English');
 INSERT INTO "task_sets" VALUES (2, 'Communications');
@@ -87,7 +88,8 @@ INSERT INTO "task_sets_task_types" VALUES (1, 4, 0.65);
 
 CREATE TABLE "task_types" (
 "id" INTEGER PRIMARY KEY AUTOINCREMENT,
-"name" TEXT
+"name" TEXT,
+"deleted" INTEGER CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
 );
 INSERT INTO "task_types" VALUES (1, 'Quiz');
 INSERT INTO "task_types" VALUES (2, 'Lab');
@@ -101,6 +103,8 @@ CREATE TABLE "tasks" (
 "name" TEXT NOT NULL UNIQUE,
 "max_score" INTEGER NOT NULL DEFAULT 100,
 "scale_factor" REAL DEFAULT 1.0 NOT NULL,
-"notes" TEXT
+"notes" TEXT,
+"deleted" INTEGER CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
 );
+
 INSERT INTO "tasks" VALUES (1, 'Shakespeare Quiz', 20, 1.0, NULL);
