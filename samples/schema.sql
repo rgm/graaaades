@@ -64,7 +64,7 @@ CREATE TABLE "students_tasks" (
 "student_id" INTEGER REFERENCES "students"("id") ON UPDATE CASCADE ON DELETE CASCADE NOT NULL,
 "task_id" INTEGER NOT NULL,
 "score" REAL,
-"special_score_id" INTEGER
+"score_type" INTEGER NOT NULL
 );
 
 
