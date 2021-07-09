@@ -40,13 +40,13 @@ CREATE TABLE "score_types" (
 "id" INTEGER PRIMARY KEY AUTOINCREMENT,
 "name" TEXT NOT NULL,
 "score" REAL,
-"should_omit" INTEGER CHECK (should_omit == 0 OR should_omit == 1) DEFAULT 0
+"should_omit" INTEGER NOT NULL CHECK (should_omit == 0 OR should_omit == 1) DEFAULT 0
 );
 
 INSERT INTO "score_types" VALUES (1, 'On Time', NULL, 0); 
 INSERT INTO "score_types" VALUES (2, 'Absent', 0.0, 0);
 INSERT INTO "score_types" VALUES (3, 'Excused', NULL, 1);
-INSERT INTO "score_types" VALUES (1, 'Late', NULL, 0);
+INSERT INTO "score_types" VALUES (4, 'Late', NULL, 0);
 
 
 CREATE TABLE "students" (
@@ -72,10 +72,10 @@ CREATE TABLE "students_tasks" (
 CREATE TABLE "task_sets" (
 "id" INTEGER PRIMARY KEY AUTOINCREMENT,
 "name" TEXT,
-"deleted" INTEGER CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
+"deleted" INTEGER NOT NULL CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
 );
-INSERT INTO "task_sets" VALUES (1, 'English');
-INSERT INTO "task_sets" VALUES (2, 'Communications');
+INSERT INTO "task_sets" VALUES (1, 'English', 0);
+INSERT INTO "task_sets" VALUES (2, 'Communications', 0);
 
 
 CREATE TABLE "task_sets_task_types" (
@@ -90,13 +90,13 @@ INSERT INTO "task_sets_task_types" VALUES (1, 4, 0.65);
 CREATE TABLE "task_types" (
 "id" INTEGER PRIMARY KEY AUTOINCREMENT,
 "name" TEXT,
-"deleted" INTEGER CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
+"deleted" INTEGER NOT NULL CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
 );
-INSERT INTO "task_types" VALUES (1, 'Quiz');
-INSERT INTO "task_types" VALUES (2, 'Lab');
-INSERT INTO "task_types" VALUES (3, 'Test');
-INSERT INTO "task_types" VALUES (4, 'Writing');
-INSERT INTO "task_types" VALUES (5, 'Class Work');
+INSERT INTO "task_types" VALUES (1, 'Quiz', 0);
+INSERT INTO "task_types" VALUES (2, 'Lab', 0);
+INSERT INTO "task_types" VALUES (3, 'Test', 0);
+INSERT INTO "task_types" VALUES (4, 'Writing', 0);
+INSERT INTO "task_types" VALUES (5, 'Class Work', 0);
 
 
 CREATE TABLE "tasks" (
@@ -105,7 +105,7 @@ CREATE TABLE "tasks" (
 "max_score" INTEGER NOT NULL DEFAULT 100,
 "scale_factor" REAL DEFAULT 1.0 NOT NULL,
 "notes" TEXT,
-"deleted" INTEGER CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
+"deleted" INTEGER NOT NULL CHECK (deleted == 0 OR deleted == 1) DEFAULT 0
 );
 
-INSERT INTO "tasks" VALUES (1, 'Shakespeare Quiz', 20, 1.0, NULL);
+INSERT INTO "tasks" VALUES (1, 'Shakespeare Quiz', 20, 1.0, NULL, 0);
