@@ -3,11 +3,12 @@
 CREATE TABLE "classes" (
 "id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
 "name" TEXT NOT NULL UNIQUE,
+"period" TEXT,
 "task_set_id" INTEGER REFERENCES "task_sets"("id") ON UPDATE CASCADE ON DELETE RESTRICT,
 "notes" TEXT
 );
-INSERT INTO "classes" VALUES (1, 'English 11', 1, NULL);
-INSERT INTO "classes" VALUES (2, 'Communications 10', 2, NULL);
+INSERT INTO "classes" VALUES (1, 'English 11', 'Semester 2/2021', 1, NULL);
+INSERT INTO "classes" VALUES (2, 'Communications 10', 'Summer 2021', 2, NULL);
 
 
 CREATE TABLE "classes_students" (
