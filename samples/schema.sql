@@ -16,12 +16,6 @@ CREATE TABLE "classes_students" (
 );
 
 
-CREATE TABLE "classes_tasks" (
-"class_id" INTEGER REFERENCES "classes"("id") ON UPDATE CASCADE ON DELETE CASCADE,
-"task_id" INTEGER REFERENCES "tasks"("id") ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-
 CREATE TABLE "ledger" (
 "id" INTEGER PRIMARY KEY ASC AUTOINCREMENT NOT NULL,
 "parent_id" INTEGER,
